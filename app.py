@@ -10,17 +10,12 @@ db = SQLAlchemy()
 csrf = CSRFProtect()
 
 
-def create_app():
+def create_app(config_key: str):
     app = Flask(__name__)
 
-    top_secrit = os.urandom(24)
-    app.config.from_mapping(
-        SECRET_KEY=top_secrit,
-        SQLALCHEMY_DATABASE_URI=f"sqlite:///{Path(__file__).parent / 'db.sqlite'}",
-        SQLALCHEMY_TRACK_MODIFICATIONS=False,
-        SQLALCHEMY_ECHO=True,
-        WTF_CSRF_SECRET_KEY=top_secrit,
-    )
+    app.config.from_object(config[config_key])
+
+    print(" * Running app as " + config_key + " mode  <--")
 
     # === Init Extensions ===
     csrf.init_app(app)
