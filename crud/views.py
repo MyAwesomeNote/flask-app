@@ -48,27 +48,28 @@ def users():
     return render_template("crud/index.html", users=_users)
 
 
-@crud.route("/users/<user_id>")
-def edit_user(user_id):
+@crud.route("/users/<id>", methods=["GET", "POST"])
+def edit_user(id):
     form = UserForm()
 
-    user = User.query.filter_by(id=user_id).first()
+    user = User.query.filter_by(id=id).first()
 
     if form.validate_on_submit():
-        user.name = form.name.data
+        user.username = form.name.data
         user.email = form.email.data
         user.password = form.password.data
 
+        db.session.add(user)
         db.session.commit()
 
         return redirect(url_for("crud.users"))
 
-    return render_template("crud/edit.html", form=form, user=user)
+    return render_template("crud/edit.html", user=user, form=form)
 
 
-@crud.route("/users/<user_id>/delete")
-def delete_user(user_id):
-    user = User.query.filter_by(id=user_id).first()
+@crud.route("/users/<id>/delete", methods=["POST"])
+def delete_user(id):
+    user = User.query.filter_by(id=id).first()
 
     db.session.delete(user)
     db.session.commit()
