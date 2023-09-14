@@ -1,10 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
+{% extends "crud/base.html" %}
 <h2>Register</h2>
 <form
         action="{{ url_for("crud.register") }}"
@@ -33,5 +27,4 @@
     <!-- Submit Form -->
     <p>{{ form.submit() }}</p>
 </form>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit User</title></head>
-<link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
-<body>
+{% extends "crud/base.html" %}
 <h2>Edit User</h2>
 <form
         action="{{ url_for('crud.edit_user', id=user.id) }}"
@@ -31,5 +25,4 @@
     {{ form.csrf_token }}
     <p><input type="submit" value="Delete"></p>
 </form>
-</body>
-</html>
+{% endblock %}

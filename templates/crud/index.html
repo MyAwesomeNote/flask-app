@@ -1,11 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href={{ url_for("static", filename="style.css") }}/>
-    <title>Users</title>
-</head>
-<body>
+{% extends "crud/base.html" %}
 <h2>Users</h2>
 <a href={{ url_for("crud.register") }}>Register</a>
 <table>
@@ -22,5 +15,4 @@
         </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}
