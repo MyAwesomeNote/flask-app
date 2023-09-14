@@ -30,5 +30,6 @@
 <form action="{{ url_for('crud.delete_user', id=user.id) }}" method="POST">
     {{ form.csrf_token }}
     <p><input type="submit" value="Delete"></p>
+</form>
 </body>
 </html>
