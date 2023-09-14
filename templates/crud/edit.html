@@ -1,28 +1,30 @@
 {% extends "crud/base.html" %}
-<h2>Edit User</h2>
-<form
-        action="{{ url_for('crud.edit_user', id=user.id) }}"
-        method="POST"
-        novalidate="novalidate"
->
-    {{ form.csrf_token }}
-    <p> {{ form.name.label }} {{ form.name(placeholder="NAME", value=user.name) }}</p>
-    {% for  error in form.name.errors %}
-        <span style="color: red;"> {{ error }} </span>
-    {% endfor %}
-    <p> {{ form.email.label }} {{ form.email(placeholder="EMAIL", value=user.email) }}</p>
-    {% for  error in form.email.errors %}
-        <span style="color: red;"> {{ error }} </span>
-    {% endfor %}
-    <p> {{ form.password.label }} {{ form.password(placeholder="PASSWORD") }}</p>
-    {% for  error in form.password.errors %}
-        <span style="color: red;"> {{ error }} </span>
-    {% endfor %}
-    <p><input type="submit" value="Refresh"></p>
-</form>
+{% block title %}Edit User{% endblock %}
+{% block content %}
+    <h2>Edit User</h2>
+    <form
+            action="{{ url_for('crud.edit_user', id=user.id) }}"
+            method="POST"
+            novalidate="novalidate"
+    >
+        {{ form.csrf_token }}
+        <p> {{ form.name.label }} {{ form.name(placeholder="NAME", value=user.name) }}</p>
+        {% for  error in form.name.errors %}
+            <span style="color: red;"> {{ error }} </span>
+        {% endfor %}
+        <p> {{ form.email.label }} {{ form.email(placeholder="EMAIL", value=user.email) }}</p>
+        {% for  error in form.email.errors %}
+            <span style="color: red;"> {{ error }} </span>
+        {% endfor %}
+        <p> {{ form.password.label }} {{ form.password(placeholder="PASSWORD") }}</p>
+        {% for  error in form.password.errors %}
+            <span style="color: red;"> {{ error }} </span>
+        {% endfor %}
+        <p><input type="submit" value="Refresh"></p>
+    </form>
 
-<form action="{{ url_for('crud.delete_user', id=user.id) }}" method="POST">
-    {{ form.csrf_token }}
-    <p><input type="submit" value="Delete"></p>
-</form>
+    <form action="{{ url_for('crud.delete_user', id=user.id) }}" method="POST">
+        {{ form.csrf_token }}
+        <p><input type="submit" value="Delete"></p>
+    </form>
 {% endblock %}

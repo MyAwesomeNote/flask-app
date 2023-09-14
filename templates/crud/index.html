@@ -1,18 +1,22 @@
 {% extends "crud/base.html" %}
-<h2>Users</h2>
-<a href={{ url_for("crud.register") }}>Register</a>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>EMAIL</th>
-    </tr>
-    {% for user in users %}
+{% block title %}Users{% endblock %}
+{% block content %}
+    <h2>Users</h2>
+    <a href={{ url_for("crud.register") }}>Register</a>
+    <table>
         <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
         </tr>
-    {% endfor %}
-</table>
+        {% for user in users %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('crud.edit_user', id=user.id ) }}">{{ user.id }}</a>
+                </td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
