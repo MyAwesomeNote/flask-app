@@ -1,0 +1,9 @@
+flask
+werkzeug  # included in flask but needed for remove warning in IDE
+flask-sqlalchemy
+flask-migrate
+flask-wtf
+python-dotenv
+WTForms  # also avoid warning
+alembic  # also yes u think
+SQLAlchemy

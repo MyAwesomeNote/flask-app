@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href={{ url_for("static", filename="style.css") }}/>
+    <title>Users</title>
+</head>
+<body>
+<h2>Users</h2>
+<a href={{ url_for("crud.register") }}>Register</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+    </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
