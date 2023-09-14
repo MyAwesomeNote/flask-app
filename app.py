@@ -16,7 +16,7 @@ def create_app():
     top_secrit = os.urandom(24)
     app.config.from_mapping(
         SECRET_KEY=top_secrit,
-        SQLALCHEMY_DATABASE_URI=f"sqlite:///{Path(__file__).parent.parent / 'db.sqlite'}",
+        SQLALCHEMY_DATABASE_URI=f"sqlite:///{Path(__file__).parent / 'db.sqlite'}",
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
         SQLALCHEMY_ECHO=True,
         WTF_CSRF_SECRET_KEY=top_secrit,
