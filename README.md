@@ -1,3 +1,5 @@
+[English](./README_en.md)
+
 ## 소개
 
 이 프로젝트는 웹 애플리케이션의 기본적인 기능 및 페이지를 구현하는 예제로, Flask에서 자주 사용되는 Model-View-Controller (MVC) 패턴과 CRUD (Create, Read, Update,
@@ -9,7 +11,7 @@ MVC 패턴은 애플리케이션을 Model, View, Controller 세 가지 컴포넌
 - View는 사용자에게 보여지는 사용자 인터페이스(UI)를 담당합니다.
 - Controller는 사용자 입력을 처리하고 Model과 View 사이의 상호 작용을 조정합니다.
 
-CRUD는 데이터 지속성에서 가장 기본적인 네 가지 작업인 Create(생성), Read(읽기), Update(수정), Delete(삭제)를 나타냅니다.
+CRUD는 데이터 지속성에서 가장 기본적F인 네 가지 작업인 Create(생성), Read(읽기), Update(수정), Delete(삭제)를 나타냅니다.
 이러한 작업들은 모든 웹 애플리케이션에서 일반적으로 필요한 기능입니다.
 
 ## 시작하기

@@ -1,3 +1,5 @@
+[Korean](./README.md)
+
 ## Introduction
 
 This project serves as an example of implementing the basic functionalities and pages of a web application,
