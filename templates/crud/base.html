@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
 </head>
 <body>
+<div>
+    {% if current_user.is_authenticated %}
+        <p>
+            <span>{{ current_user.name }}</span> -
+            <span><a href="{{ url_for("auth.logout") }}">Logout</a></span>
+        </p>
+    {% endif %}
+</div>
 {% block content %}{% endblock %}
 </body>
 </html>
