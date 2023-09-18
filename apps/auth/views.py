@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, url_for, request, redirect, flash
 from flask_login import login_user, logout_user
 
 from app import db
-from auth.forms import SignUpForm, SignInForm
-from crud.models.user import User
+from apps.auth.forms import SignUpForm, SignInForm
+from apps.crud.models.user import User
 
 auth = Blueprint(
     "auth",

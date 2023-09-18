@@ -39,13 +39,13 @@ def create_app(config_key: str):
 
     Migrate(app, db)
 
-    from contact import views as contact_views
+    from apps.contact import views as contact_views
     app.register_blueprint(contact_views.contact, url_prefix='/contact')
 
-    from crud import views as crud_views  # must be here to avoid circular import
+    from apps.crud import views as crud_views
     app.register_blueprint(crud_views.crud, url_prefix='/crud')
 
-    from auth import views as auth_views
+    from apps.auth import views as auth_views
     app.register_blueprint(auth_views.auth, url_prefix='/auth')
 
     return app

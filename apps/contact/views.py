@@ -74,6 +74,7 @@ def complete():
     return render_template("contact/complete.html")
 
 
+# noinspection PyUnresolvedReferences
 def send_email(to, subject, template, **kwargs):
     msg = Message(subject, recipients=[to])
 

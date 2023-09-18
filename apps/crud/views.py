@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, url_for, redirect
 from flask_login import login_required
 
 from app import db
-from crud.forms import UserForm
-from crud.models.user import User
+from apps.crud.forms import UserForm
+from apps.crud.models.user import User
 
 crud = Blueprint(
     "crud",
