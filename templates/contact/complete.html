@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href={{ url_for("static", filename="contact/base.css") }}/>
+    <link rel="stylesheet" href={{ url_for("static", filename="contact/hello.css") }}/>
+    <link rel="stylesheet" href={{ url_for("static", filename="contact/contact.css") }}/>
+</head>
+
+<body>
+<div class="contact-bg">
+    <h1 class="contact-heading">Submitted!</h1>
+    <p class="contact-subheading">Thank you for your message.</p>
+
+    <input type="button" class="contact-sumit contact-back" value="Back to Home" onclick="location.href='/'">
+</div>
+</body>
+</html>

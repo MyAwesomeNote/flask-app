@@ -1,0 +1,5 @@
+Thank you for contacting us {{ name }}!
+
+The details of your inquiry are as follows:
+
+{{ message }}

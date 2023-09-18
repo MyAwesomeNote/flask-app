@@ -8,6 +8,15 @@ class BaseConfig:
     SECRET_KEY = os.urandom(24)
     WTF_CSRF_SECRET_KEY = os.urandom(24)
 
+    DEBUG_TB_INTERCEPT_REDIRECTS = False  # Disable redirect interception
+
+    MAIL_SERVER = "smtp.gmail.com"
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = "pleahmacaka@gmail.com"
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    MAIL_DEFAULT_SENDER = "Support Team <pleahmacaka@gmail.com>"
+
 
 class LocalConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(cwd / 'local.sqlite')

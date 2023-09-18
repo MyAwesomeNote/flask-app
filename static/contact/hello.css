@@ -1,0 +1,82 @@
+#hello-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#hello-heading {
+    animation: fadein 0.3s ease-in-out, move 0.3s ease-in-out, blinking-text-alpha 1.35s infinite;
+    position: relative;
+    z-index: 1;
+}
+
+#hello-underline {
+    position: absolute;
+    height: 0.2rem;
+    background-color: orange;
+    animation: underline-slide 1.35s infinite;
+}
+
+#goto-contact {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    border: 2px solid #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+#goto-contact:hover {
+    color: rgba(0, 0, 0, 1);
+    border: 2px solid rgba(0, 0, 0, 1);
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes move {
+    from {
+        transform: translateY(-40px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes blinking-text-alpha {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes underline-slide {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%;
+    }
+    100% {
+        width: 0;
+    }
+}
