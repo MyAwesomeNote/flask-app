@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_login import LoginManager
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +13,10 @@ csrf = CSRFProtect()
 
 mail = None
 toolbar = None
+
+login_manager = LoginManager()
+login_manager.login_view = 'auth.signup'
+login_manager.login_message = ""
 
 
 def create_app(config_key: str):
@@ -27,6 +32,8 @@ def create_app(config_key: str):
     csrf.init_app(app)
     db.init_app(app)
 
+    login_manager.init_app(app)
+
     mail = Mail(app)
     toolbar = DebugToolbarExtension(app)
 
@@ -37,5 +44,8 @@ def create_app(config_key: str):
 
     from crud import views as crud_views  # must be here to avoid circular import
     app.register_blueprint(crud_views.crud, url_prefix='/crud')
+
+    from auth import views as auth_views
+    app.register_blueprint(auth_views.auth, url_prefix='/auth')
 
     return app

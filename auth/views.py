@@ -1,0 +1,72 @@
+from flask import Blueprint, render_template, url_for, request, redirect, flash
+from flask_login import login_user
+
+from app import db
+from auth.forms import SignUpForm, SignInForm
+from crud.models.user import User
+
+auth = Blueprint(
+    "auth",
+    __name__,
+    template_folder="templates",
+    static_folder="static",
+)
+
+
+@auth.route("/")
+def index():
+    return render_template("auth/index.html")
+
+
+@auth.route("/login")
+def login():
+    return redirect(url_for("auth.signin"))
+
+
+@auth.route("/register")
+def register():
+    return redirect(url_for("auth.signup"))
+
+
+@auth.route("/signup", methods=["GET", "POST"])
+def signup():
+    form = SignUpForm()
+
+    if form.validate_on_submit():
+        user = User(
+            name=form.name.data,
+            email=form.email.data,
+            password=form.password.data,
+        )
+
+        if user.is_duplicate_email():
+            from flask import flash
+            flash("This email is already registered", "error")
+            return render_template("auth/signup.html", form=form)
+
+        db.session.add(user)
+        db.session.commit()
+
+        login_user(user)
+
+        _next = request.args.get("next")
+        if _next is None or not _next.startswith("/"):
+            _next = url_for("crud.users")
+            return redirect(_next)
+
+    return render_template("auth/signup.html", form=form)
+
+
+@auth.route("/signin", methods=["GET", "POST"])
+def signin():
+    form = SignInForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+
+        if user is not None and user.verify_password(form.password.data):
+            login_user(user)
+            return redirect(url_for("crud.users"))
+
+        flash("Invalid email or password", "error")
+    return render_template("auth/signin.html", form=form)

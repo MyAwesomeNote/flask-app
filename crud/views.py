@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, url_for, redirect
+from flask_login import login_required
 
 from app import db
 from crud.forms import UserForm
@@ -13,17 +14,20 @@ crud = Blueprint(
 
 
 @crud.route("/")
+@login_required
 def index():
     return render_template("crud/index.html")
 
 
 @crud.route("/sql")
+@login_required
 def sql_index():
     db.session.query(User).all()
     return "Please check the console for the SQL query."
 
 
 @crud.route("/register", methods=["GET", "POST"])
+@login_required
 def register():
     form = UserForm()
 
@@ -43,12 +47,14 @@ def register():
 
 
 @crud.route("/users")
+@login_required
 def users():
     _users = User.query.all()
     return render_template("crud/index.html", users=_users)
 
 
-@crud.route("/users/<id>", methods=["GET", "POST"])
+@crud.route("/user/<id>", methods=["GET", "POST"])
+@login_required
 def edit_user(id):
     form = UserForm()
 
@@ -67,7 +73,8 @@ def edit_user(id):
     return render_template("crud/edit.html", user=user, form=form)
 
 
-@crud.route("/users/<id>/delete", methods=["POST"])
+@crud.route("/user/<id>/delete", methods=["POST"])
+@login_required
 def delete_user(id):
     user = User.query.filter_by(id=id).first()
 
