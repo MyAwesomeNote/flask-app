@@ -1,3 +1,21 @@
+## Introduction
+
+This project serves as an example of implementing the basic functionalities and pages of a web application,
+demonstrating the use of the commonly used Model-View-Controller (MVC) pattern and CRUD (Create, Read, Update, Delete)
+the pattern in Flask.
+The code included in this repository will greatly assist developers in understanding these patterns.
+The MVC pattern is a software design pattern that separates an application into three components: Model, View, and
+Controller.
+This structure helps improve code reusability and maintainability.
+
+- The Model represents and processes the information (data) of the application.
+- The View is responsible for the user interface (UI) that is presented to the user.
+- The Controller handles user input and coordinates the interactions between the Model and the View.
+
+CRUD represents the four basic operations in data persistence: Create, Read, Update, Delete.
+These operations are
+typically required functionalities in all web applications
+
 ## Getting Started
 
 ### Prerequisites
