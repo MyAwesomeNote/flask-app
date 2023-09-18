@@ -1,31 +1,23 @@
-{% extends "auth/base.html" %}
+{% extends "detector/base.html" %}
 {% block title %}Sign Up{% endblock %}
 {% block content %}
-    <h2>Sign Up</h2>
-    <form
-            action="{{ url_for("auth.signup", next=request.args.get("next")) }}"
-            method="POST"
-            novalidate="novalidate"
-    >
-        {% for message in get_flashed_messages() %}
-            <p style="color: red;">{{ message }}</p>
-        {% endfor %}
+  <div class="mx-auto dt-auth-main">
+    <div class="dt-auth-signup card">
+      <header>Sign Up</header>
+      <form
+        action="{{ url_for("auth.signup", next=request.args.get("next")) }}"
+        method="POST"
+        class="form-signin"
+      >
         {{ form.csrf_token }}
-        <p>
-            {{ form.name.label }}
-            {{ form.name(size=30, placeholder="Name", autocomplete="off") }}
-        </p>
-        {% for error in form.name.errors %}
-            <span style="color: red;">{{ error }}</span>
+        {% for message in get_flashed_messages() %}
+          <div class="dt-auth-flash">{{ message }}</div>
         {% endfor %}
-        <p>{{ form.email.label }} {{ form.email(placeholder="Email Address") }}</p>
-        {% for error in form.email.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        <p>{{ form.password.label }} {{ form.password(placeholder="Password") }}</p>
-        {% for error in form.password.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
-        <p>{{ form.submit() }}</p>
-    </form>
+        {{ form.name(size=30, placeholder="Name", class="form-control dt-auth-input", autocomplete="off") }}
+        {{ form.email(placeholder="Email Address", class="form-control dt-auth-input") }}
+        {{ form.password(placeholder="Password", class="form-control dt-auth-input") }}
+        {{ form.submit(class="btn btn-md btn-primary btn-block dt-auth-btn") }}
+      </form>
+    </div>
+  </div>
 {% endblock %}

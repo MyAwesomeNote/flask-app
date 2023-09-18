@@ -48,4 +48,7 @@ def create_app(config_key: str):
     from apps.auth import views as auth_views
     app.register_blueprint(auth_views.auth, url_prefix='/auth')
 
+    from apps.detector import views as detector_views
+    app.register_blueprint(detector_views.dt, url_prefix='/detector')
+
     return app

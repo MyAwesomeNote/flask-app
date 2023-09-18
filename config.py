@@ -17,6 +17,8 @@ class BaseConfig:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = "Support Team <pleahmacaka@gmail.com>"
 
+    UPLOAD_FOLDER = cwd / "images"
+
 
 class LocalConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(cwd / 'local.sqlite')

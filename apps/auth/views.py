@@ -49,10 +49,10 @@ def signup():
 
         login_user(user)
 
-        _next = request.args.get("next")
-        if _next is None or not _next.startswith("/"):
-            _next = url_for("crud.users")
-            return redirect(_next)
+        next_ = request.args.get("next")
+        if next_ is None or not next_.startswith("/"):
+            next_ = url_for("detector.index")
+            return redirect(next_)
 
     return render_template("auth/signup.html", form=form)
 
