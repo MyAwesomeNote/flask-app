@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Name</title>
-    <link rel="stylesheet" href={{ url_for("static", filename="css/contact/base.css") }}/>
-    <link rel="stylesheet" href={{ url_for("static", filename="css/contact/hello.css") }}/>
+  <meta charset="UTF-8">
+  <title>Name</title>
+  <link rel="stylesheet" href={{ url_for("static", filename="css/contact/base.css") }}/>
+  <link rel="stylesheet" href={{ url_for("static", filename="css/contact/hello.css") }}/>
 </head>
 <body>
 <div id="hello-bg">
-    <h1 id="hello-heading">Hello {{ name }}!
-        <div id="hello-underline"></div>
-    </h1>
-    <a id="goto-contact" href={{ url_for("contact.us") }}>Contact Us</a>
+  <h1 id="hello-heading">Hello {{ name }}!
+    <div id="hello-underline"></div>
+  </h1>
+  <a id="goto-contact" href={{ url_for("contact.us") }}>Contact Us</a>
 </div>
 </body>
 </html>

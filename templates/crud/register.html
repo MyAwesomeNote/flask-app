@@ -1,32 +1,32 @@
 {% extends "crud/base.html" %}
 {% block title %}Register{% endblock %}
 {% block content %}
-    <h2>Register</h2>
-    <form
-            action="{{ url_for("crud.register") }}"
-            method="POST"
-            novalidate="novalidate"
-    >
-        {{ form.csrf_token }}
-        <!-- Name Section -->
-        <p>{{ form.name.label }} {{ form.name(placeholder="Name", autocomplete="off") }}</p>
-        {% for error in form.name.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
+  <h2>Register</h2>
+  <form
+    action="{{ url_for("crud.register") }}"
+    method="POST"
+    novalidate="novalidate"
+  >
+    {{ form.csrf_token }}
+    <!-- Name Section -->
+    <p>{{ form.name.label }} {{ form.name(placeholder="Name", autocomplete="off") }}</p>
+    {% for error in form.name.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
 
-        <!-- Email Section -->
-        <p>{{ form.email.label }} {{ form.email(placeholder="Email") }}</p>
-        {% for error in form.email.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
+    <!-- Email Section -->
+    <p>{{ form.email.label }} {{ form.email(placeholder="Email") }}</p>
+    {% for error in form.email.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
 
-        <!-- Password Section -->
-        <p>{{ form.password.label }} {{ form.password(placeholder="Password") }}</p>
-        {% for error in form.password.errors %}
-            <span style="color: red;">{{ error }}</span>
-        {% endfor %}
+    <!-- Password Section -->
+    <p>{{ form.password.label }} {{ form.password(placeholder="Password") }}</p>
+    {% for error in form.password.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
 
-        <!-- Submit Form -->
-        <p>{{ form.submit() }}</p>
-    </form>
+    <!-- Submit Form -->
+    <p>{{ form.submit() }}</p>
+  </form>
 {% endblock %}

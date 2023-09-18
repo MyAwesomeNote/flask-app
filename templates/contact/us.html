@@ -1,73 +1,73 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href={{ url_for("static", filename="css/contact/base.css") }}/>
-    <link rel="stylesheet" href={{ url_for("static", filename="css/contact/hello.css") }}/>
-    <link rel="stylesheet" href={{ url_for("static", filename="css/contact/contact.css") }}/>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href={{ url_for("static", filename="css/contact/base.css") }}/>
+  <link rel="stylesheet" href={{ url_for("static", filename="css/contact/hello.css") }}/>
+  <link rel="stylesheet" href={{ url_for("static", filename="css/contact/contact.css") }}/>
 </head>
 
 <body>
 <div class="contact-bg">
-    <h1 class="contact-heading">Contact Us</h1>
-    {% with msgs = get_flashed_messages() %}
-        {% if msgs %}
-            <ul class="contact-msg">
-                {% for msg in msgs %}
-                    <li>{{ msg }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    <form
-            class="contact-form"
-            action="{{ url_for("contact.complete") }}"
-            method="POST"
-            novalidate="novalidate"
-    >
-        <table>
-            <tr>
-                <td>Name</td>
-                <td>
-                    <label>
-                        <input
-                                type="text"
-                                autocomplete="off"
-                                name="name"
-                                value="{{ name }}"
-                                placeholder="Your name"
-                        >
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <label>
-                        <input
-                                type="email"
-                                name="email"
-                                value="{{ email }}"
-                                placeholder="Your email address"
-                        >
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>Message</td>
-                <td>
-                    <label>
+  <h1 class="contact-heading">Contact Us</h1>
+  {% with msgs = get_flashed_messages() %}
+    {% if msgs %}
+      <ul class="contact-msg">
+        {% for msg in msgs %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <form
+    class="contact-form"
+    action="{{ url_for("contact.complete") }}"
+    method="POST"
+    novalidate="novalidate"
+  >
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>
+          <label>
+            <input
+              type="text"
+              autocomplete="off"
+              name="name"
+              value="{{ name }}"
+              placeholder="Your name"
+            >
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>
+          <label>
+            <input
+              type="email"
+              name="email"
+              value="{{ email }}"
+              placeholder="Your email address"
+            >
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Message</td>
+        <td>
+          <label>
                     <textarea
-                            name="message"
-                            placeholder="Your message"
+                      name="message"
+                      placeholder="Your message"
                     >{{ message }}</textarea>
-                    </label>
-                </td>
-            </tr>
-        </table>
-        <input type="submit" value="Submit" class="contact-sumit">
-    </form>
+          </label>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="Submit" class="contact-sumit">
+  </form>
 </div>
 </body>
 </html>

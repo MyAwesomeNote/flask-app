@@ -1,18 +1,18 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
 </head>
 <body>
 <div>
-    {% if current_user.is_authenticated %}
-        <p>
-            <span>{{ current_user.name }}</span> -
-            <span><a href="{{ url_for("auth.logout") }}">Logout</a></span>
-        </p>
-    {% endif %}
+  {% if current_user.is_authenticated %}
+    <p>
+      <span>{{ current_user.name }}</span> -
+      <span><a href="{{ url_for("auth.logout") }}">Logout</a></span>
+    </p>
+  {% endif %}
 </div>
 {% block content %}{% endblock %}
 </body>

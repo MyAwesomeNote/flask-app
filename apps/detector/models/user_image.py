@@ -8,7 +8,7 @@ from app import db
 class UserImage(db.Model, UserMixin):
     __tablename__ = "user_images"
 
-    def  __init__(self, user_id, image_path):
+    def __init__(self, user_id, image_path):
         self.user_id = user_id
         self.image_path = image_path
 
