@@ -21,6 +21,19 @@
         <div class="d-flex flex-row-reverse">
           <div class="p-2">
             <form
+              action="{{ url_for("detector.delete_image", image_id=user_image.UserImage.id) }}"
+              method="POST"
+            >
+              {{ delete_image_form.csrf_token }}
+              {% if current_user.id == user_image.User.id %}
+                {{ delete_image_form.submit(class="btn btn-danger") }}
+              {% else %}
+                {{ delete_image_form.submit(class="btn btn-danger", disabled="disabled") }}
+              {% endif %}
+            </form>
+          </div>
+          <div class="p-2">
+            <form
               action="{{ url_for("detector.detect", image_id=user_image.UserImage.id) }}"
               method="POST"
             >
