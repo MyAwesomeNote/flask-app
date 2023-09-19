@@ -5,11 +5,11 @@ from pathlib import Path
 import cv2
 import numpy as np
 import torch
-import torchvision
 from PIL import Image
 from flask import Blueprint, render_template, current_app, url_for, redirect, flash
 from flask_login import current_user, login_required
 from sqlalchemy.exc import SQLAlchemyError
+from torchvision.transforms import functional
 
 from app import db
 from apps.crud.models.user import User
@@ -50,7 +50,7 @@ def index():
     detector_form = DetectorForm()
 
     return render_template("detector/index.html",
-                           user_images=user_images,
+                           user_images=reversed(user_images),
                            user_image_tag_dict=user_image_tag_dict,
                            detector_form=detector_form)
 
@@ -128,22 +128,23 @@ def draw_texts(res_img, line, c1, cv2, color, labels, label):
     return cv2
 
 
+# noinspection PyShadowingNames
 def exec_detect(target_image_path):
     labels = current_app.config["LABELS"]
 
-    image = Image.open(target_image_path)
+    img = Image.open(target_image_path)
 
-    image_tensor = torchvision.transforms.functional.to_tensor(image)
+    img_tensor = functional.to_tensor(img)
 
     model = torch.load(Path(current_app.root_path, "model.pt"))
 
     model = model.eval()
 
-    output = model([image_tensor])[0]
+    out = model([img_tensor])[0]
     tags = []
-    result_image = np.array(image.copy())
+    result_image = np.array(img.copy())
 
-    for box, label, score in zip(output["boxes"], output["labels"], output["scores"]):
+    for box, label, score in zip(out["boxes"], out["labels"], out["scores"]):
         if score > 0.5 and labels[label] not in tags:
             color = make_color(labels)
             line = make_line(result_image)
@@ -160,6 +161,8 @@ def exec_detect(target_image_path):
     detected_image_file_path = str(
         Path(current_app.config["UPLOAD_FOLDER"], detected_image_file_name)
     )
+
+    # noinspection PyUnboundLocalVariable
     cv2.imwrite(detected_image_file_path, cv2.cvtColor(result_image, cv2.COLOR_RGB2BGR))
     return tags, detected_image_file_name
 
