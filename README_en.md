@@ -78,6 +78,13 @@ flask run
     2. don't match, you are not logged in.
 3. If you are logged in, you can access the `/auth` endpoints.
 
+### 👀 How the detector works?
+
+The pre-trained model of PyTorch is downloaded and saved. (Included in `init.bat`, `cmd/gen_model.py`)
+When there is a request from the detector, the model is loaded, a rectangle is drawn and displayed to the user.
+The analyzed results are stored in the `user_image_tag` table,
+and the `Detect` button is disabled for the pictures that have already been analyzed.
+
 ### 📚 Libraries
 
 - 🗃️ SQL ㅣ DataBase
