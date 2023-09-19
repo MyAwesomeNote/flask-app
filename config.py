@@ -17,7 +17,7 @@ class BaseConfig:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = "Support Team <pleahmacaka@gmail.com>"
 
-    UPLOAD_FOLDER = cwd / "images"
+    UPLOAD_FOLDER = str(Path(cwd, "images"))
 
 
 class LocalConfig(BaseConfig):

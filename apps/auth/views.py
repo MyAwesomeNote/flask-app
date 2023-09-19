@@ -66,7 +66,7 @@ def signin():
 
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
-            return redirect(url_for("crud.users"))
+            return redirect(url_for("detector.index"))
 
         flash("Invalid email or password", "error")
     return render_template("auth/signin.html", form=form)

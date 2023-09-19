@@ -1,24 +1,28 @@
-{% extends "auth/base.html" %}
-{% block title %}Sign In{% endblock %}
+{% extends "detector/base.html" %}
 {% block content %}
-  <h2>Sign In</h2>
-  <form
-    action="{{ url_for("auth.signin", next=request.args.get("next")) }}"
-    method="POST"
-    novalidate="novalidate"
-  >
-    {% for msg in get_flashed_messages() %}
-      <p style="color:  red;">{{ msg }}</p>
-    {% endfor %}
-    {{ form.csrf_token }}
-    <p>{{ form.email.label }} {{ form.email(placeholder="Email Address") }}</p>
-    {% for error in form.email.errors %}
-      <span style="color: red;">{{ error }}</span>
-    {% endfor %}
-    <p>{{ form.password.label }} {{ form.password(placeholder="Password") }}</p>
-    {% for error in form.password.errors %}
-      <span style="color: red;">{{ error }}</span>
-    {% endfor %}
-    <p>{{ form.submit() }}</p>
-  </form>
+  <div class="mx-auto dt-auth-main">
+    <div class="dt-auth-signup card">
+      <header>Sign In</header>
+      <form
+        action="{{ url_for('auth.signin', next=request.args.get('next')) }}"
+        method="POST"
+        novalidate="novalidate"
+        class="form-signin"
+      >
+        {% for message in get_flashed_messages() %}
+          <div class="dt-auth-flash">{{ message }}</div>
+        {% endfor %}
+        {{ form.csrf_token }}
+        {{ form.email(size=30, placeholder="Email Address", class="form-control dt-auth-input") }}
+        {% for error in form.email.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        {{ form.password(size=30, placeholder="Password", class="form-control dt-auth-input") }}
+        {% for error in form.password.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        {{ form.submit(class="btn btn-md btn-primary btn-block dt-auth-btn") }}
+      </form>
+    </div>
+  </div>
 {% endblock %}

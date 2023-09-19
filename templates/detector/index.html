@@ -12,7 +12,7 @@
       </header>
       <section>
         <img
-          src="{{ url_for("detector.image_file", filename=user_image.UserImage.image_path) }}"
+          src="{{ url_for("detector.get_image", filename=user_image.UserImage.image_path) }}"
           alt="Uploaded Image"
         />
       </section>

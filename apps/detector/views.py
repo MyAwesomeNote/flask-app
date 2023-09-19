@@ -2,7 +2,7 @@ import uuid
 from pathlib import Path
 
 from flask import Blueprint, render_template, current_app, url_for, redirect
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 from app import db
 from apps.crud.models.user import User
@@ -30,6 +30,7 @@ def index():
 
 
 @dt.route("/upload", methods=["GET", "POST"])
+@login_required
 def upload_image():
     form = UploadImageForm()
 
@@ -39,13 +40,13 @@ def upload_image():
     file = form.image.data
 
     ext = Path(file.filename).suffix
-    img_uuid_file_name = str(uuid.uuid4()) + ext
-    img_path = Path(current_app.config["UPLOAD_FOLDER"], img_uuid_file_name)
-    file.save(img_path)
+    image_uuid_file_name = str(uuid.uuid4()) + ext
+    image_path = Path(current_app.config["UPLOAD_FOLDER"], image_uuid_file_name)
+    file.save(image_path)
 
     user_image = UserImage(
         user_id=current_user.id,
-        image_path=img_path,
+        image_path=image_uuid_file_name,
     )
 
     db.session.add(user_image)
