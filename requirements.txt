@@ -9,3 +9,7 @@ alembic  # also yes u think
 SQLAlchemy
 flask_mail
 flask_debugtoolbar
+torch
+torchvision
+opencv-python
+pillow

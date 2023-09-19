@@ -2,3 +2,4 @@
 *.sqlite
 migrations
 images
+model.pt
