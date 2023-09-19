@@ -15,8 +15,8 @@ from app import db
 from apps.crud.models.user import User
 from apps.detector.forms.DetectorForm import DetectorForm
 from apps.detector.forms.UploadImageForm import UploadImageForm
-from apps.detector.models.user_image import UserImage
-from apps.detector.models.user_image import UserImageTag
+from apps.detector.models import UserImage
+from apps.detector.models import UserImageTag
 
 dt = Blueprint(
     "detector",
