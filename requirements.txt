@@ -1,16 +1,19 @@
-flask
-werkzeug  # included in flask but needed for remove warning in IDE
-flask-sqlalchemy
-flask-migrate
-flask-wtf
-python-dotenv
-WTForms  # also avoid warning
-alembic  # also yes u think
-SQLAlchemy
-flask_mail
-flask_debugtoolbar
-torch
-torchvision
+alembic
 opencv-python
-pillow
+flask
+flask_debugtoolbar
+flask_login
+flask_mail
+email_validator
+flask_migrate
+flask_sqlalchemy
+flask_wtf
 numpy
+pillow
+sqlalchemy
+python-dotenv
+
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==2.0.1+cpu
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.15.2+cpu
